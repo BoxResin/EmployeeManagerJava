@@ -18,7 +18,7 @@ public class Main
             System.out.println("2. 사원 삭제");
             System.out.println("3. 전체 사원 출력");
             System.out.println("4. 끝내기");
-            System.out.println("번호 입력: ");
+            System.out.print("번호 입력: ");
 
             int command = scanner.nextInt();
 
@@ -27,7 +27,7 @@ public class Main
             case 1:
                 {
                     int number, age, salary;
-                    System.out.print("사원번호: ");
+                    System.out.print("\n\n사원번호: ");
                     number = scanner.nextInt();
                     System.out.print("나이: ");
                     age = scanner.nextInt();
@@ -40,7 +40,7 @@ public class Main
 
             case 2:
                 {
-                    System.out.print("삭제할 사원번호: ");
+                    System.out.print("\n\n삭제할 사원번호: ");
                     int number = scanner.nextInt();
 
                     if (DeleteEmployee(number))
@@ -51,7 +51,9 @@ public class Main
                 break;
 
             case 3:
+                System.out.println();
                 PrintAllEmployee();
+                System.out.println();
                 break;
 
             case 4:
