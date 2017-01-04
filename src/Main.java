@@ -18,7 +18,7 @@ public class Main
             System.out.println("2. 사원 삭제");
             System.out.println("3. 전체 사원 출력");
             System.out.println("4. 끝내기");
-            System.out.println("번호 입력: ");
+            System.out.print("번호 입력: ");
 
             int command = scanner.nextInt();
 
@@ -27,7 +27,7 @@ public class Main
             case 1:
                 {
                     int number, age, salary;
-                    System.out.print("사원번호: ");
+                    System.out.print("\n\n사원번호: ");
                     number = scanner.nextInt();
                     System.out.print("나이: ");
                     age = scanner.nextInt();
@@ -40,7 +40,7 @@ public class Main
 
             case 2:
                 {
-                    System.out.print("삭제할 사원번호: ");
+                    System.out.print("\n\n삭제할 사원번호: ");
                     int number = scanner.nextInt();
 
                     if (DeleteEmployee(number))
@@ -51,7 +51,9 @@ public class Main
                 break;
 
             case 3:
+                System.out.println();
                 PrintAllEmployee();
+                System.out.println();
                 break;
 
             case 4:
@@ -76,12 +78,22 @@ public class Main
      */
     private static boolean DeleteEmployee(int number)
     {
-        if(number < employees.size())
+        int i;
+        int size = employees.size();
+
+        for(i = 0; i < size; i++)
         {
-            employees.remove(number);
-            return true;
-        }else
+            if(employees.get(i).number == number)
+            {
+                employees.remove(i);
+                break;
+            }
+        }
+
+        if(i == size)
             return false;
+        else
+            return true;
     }
 
 	/**
@@ -91,17 +103,23 @@ public class Main
     {
         int sum_a = 0 , sum_s = 0;
 
-        for(int i = 0; i < employees.size(); i++)
+        if(employees.size()>0)
         {
-            System.out.println("사원번호: " + employees.get(i).number);
-            System.out.println("나이: " + employees.get(i).age);
-            System.out.println("봉급: " + employees.get(i).salary);
 
-            sum_a += employees.get(i).age;
-            sum_s += employees.get(i).salary;
-        }
+            for (int i = 0; i < employees.size(); i++)
+            {
+                System.out.println("\n사원번호: " + employees.get(i).number);
+                System.out.println("나이: " + employees.get(i).age);
+                System.out.println("봉급: " + employees.get(i).salary + "");
 
-        System.out.println("평균 나이: " + sum_a / employees.size());
-        System.out.println("평균 봉급: " + sum_s / employees.size());
+
+                sum_a += employees.get(i).age;
+                sum_s += employees.get(i).salary;
+            }
+
+            System.out.println("\n평균 나이: " + sum_a / employees.size());
+            System.out.println("평균 봉급: " + sum_s / employees.size());
+        }else
+            System.out.println("등록된 사원이 없습니다.");
     }
 }
