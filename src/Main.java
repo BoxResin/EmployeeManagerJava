@@ -1,5 +1,10 @@
+import java.util.ArrayList;
+
 public class Main
 {
+
+    private static ArrayList<Employee> employees = new ArrayList<>();
+
     public static void main(String[] args)
     {
         System.out.println("Hello World");
@@ -11,6 +16,7 @@ public class Main
      */
     private static void AddEmployee(Employee employee)
     {
+        employees.add(employee);
     }
 
 	/**
@@ -20,7 +26,12 @@ public class Main
      */
     private static boolean DeleteEmployee(int number)
     {
-
+        if(number < employees.size())
+        {
+            employees.remove(number);
+            return true;
+        }else
+            return false;
     }
 
 	/**
@@ -28,5 +39,19 @@ public class Main
      */
     private static void PrintAllEmployee()
     {
+        int sum_a = 0 , sum_s = 0;
+
+        for(int i = 0; i < employees.size(); i++)
+        {
+            System.out.println("사원번호: " + employees.get(i).number);
+            System.out.println("나이: " + employees.get(i).age);
+            System.out.println("봉급: " + employees.get(i).salary);
+
+            sum_a += employees.get(i).age;
+            sum_s += employees.get(i).salary;
+        }
+
+        System.out.println("평균 나이: " + sum_a / employees.size());
+        System.out.println("평균 봉급: " + sum_s / employees.size());
     }
 }

@@ -11,7 +11,7 @@ public class Employee
     {
         this.number = number;
         this.age = age;
-        this.salary = salary
+        this.salary = salary;
     }
 
     public void PrintEmployee()
